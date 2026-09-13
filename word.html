@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Counter - ToolAadi</title>
+<style>
+body{
+  font-family:Arial,sans-serif;
+  background:#f4f4f4;
+  margin:0;
+  padding:20px;
+}
+.box{
+  max-width:500px;
+  margin:40px auto;
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 4px 15px rgba(0,0,0,.12);
+}
+h1{text-align:center}
+textarea{
+  width:94%;
+  height:220px;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+  resize:vertical;
+}
+.stats{
+  margin-top:20px;
+  display:grid;
+  gap:10px;
+}
+.stat{
+  background:#f4f4f4;
+  padding:12px;
+  border-radius:8px;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h1>Word Counter</h1>
+
+<textarea id="text" placeholder="Type or paste your text here..." oninput="countText()"></textarea>
+
+<div class="stats">
+<div class="stat">Words: <span id="words">0</span></div>
+<div class="stat">Characters: <span id="characters">0</span></div>
+<div class="stat">Characters (without spaces): <span id="noSpaces">0</span></div>
+<div class="stat">Lines: <span id="lines">0</span></div>
+</div>
+
+</div>
+
+<script>
+function countText(){
+
+let text=document.getElementById("text").value;
+
+let words=text.trim()==="" ? 0 : text.trim().split(/\s+/).length;
+let characters=text.length;
+let noSpaces=text.replace(/\s/g,"").length;
+let lines=text==="" ? 0 : text.split(/\n/).length;
+
+document.getElementById("words").textContent=words;
+document.getElementById("characters").textContent=characters;
+document.getElementById("noSpaces").textContent=noSpaces;
+document.getElementById("lines").textContent=lines;
+}
+</script>
+
+</body>
+  </html>
