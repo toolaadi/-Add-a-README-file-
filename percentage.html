@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percentage Calculator - ToolAadi</title>
+
+<style>
+body{
+  font-family:Arial,sans-serif;
+  background:#f4f4f4;
+  margin:0;
+  padding:20px;
+}
+.box{
+  max-width:450px;
+  margin:40px auto;
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 4px 15px rgba(0,0,0,.12);
+  text-align:center;
+}
+input{
+  width:90%;
+  padding:13px;
+  margin:10px 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+}
+button{
+  width:95%;
+  padding:14px;
+  border:0;
+  border-radius:8px;
+  background:#111;
+  color:white;
+  font-size:17px;
+  margin-top:10px;
+}
+#result{
+  margin-top:20px;
+  font-size:20px;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h1>Percentage Calculator</h1>
+<p>Calculate percentage easily</p>
+
+<input type="number" id="number" placeholder="Enter number">
+<input type="number" id="total" placeholder="Enter total">
+
+<button onclick="calculate()">Calculate Percentage</button>
+
+<div id="result"></div>
+</div>
+
+<script>
+function calculate(){
+  let number = parseFloat(document.getElementById("number").value);
+  let total = parseFloat(document.getElementById("total").value);
+
+  if(isNaN(number) || isNaN(total)){
+    document.getElementById("result").innerHTML =
+    "Please enter both numbers.";
+    return;
+  }
+
+  if(total === 0){
+    document.getElementById("result").innerHTML =
+    "Total cannot be zero.";
+    return;
+  }
+
+  let percentage = (number / total) * 100;
+
+  document.getElementById("result").innerHTML =
+  percentage.toFixed(2) + "%";
+}
+</script>
+
+</body>
+  </html>
