@@ -3,108 +3,169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Age Calculator - ToolAadi</title>
+
+<title>ToolAadi - Free Online Tools</title>
+<meta name="description" content="ToolAadi provides simple, fast and free online tools including age, percentage, EMI, unit and word calculators.">
 
 <style>
+*{
+  box-sizing:border-box;
+}
+
 body{
-    font-family:Arial,sans-serif;
-    background:#f4f4f4;
-    margin:0;
-    padding:20px;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f4f4;
+  color:#111;
 }
-.box{
-    max-width:450px;
-    margin:40px auto;
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 4px 15px rgba(0,0,0,.12);
-    text-align:center;
+
+header{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:35px 20px;
 }
-h1{margin-bottom:10px}
-p{color:#666}
-input{
-    width:90%;
-    padding:13px;
-    margin:15px 0;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:16px;
+
+header h1{
+  margin:0;
+  font-size:34px;
 }
-button{
-    width:95%;
-    padding:14px;
-    border:0;
-    border-radius:8px;
-    background:#111;
-    color:white;
-    font-size:17px;
-    cursor:pointer;
+
+header p{
+  margin:10px 0 0;
+  color:#ddd;
 }
-#result{
-    margin-top:20px;
-    font-size:20px;
-    font-weight:bold;
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:25px 15px;
+}
+
+.intro{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.intro h2{
+  margin-bottom:8px;
+}
+
+.tools{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.tool{
+  background:white;
+  padding:22px;
+  border-radius:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.1);
+  text-decoration:none;
+  color:#111;
+  transition:.2s;
+}
+
+.tool:hover{
+  transform:translateY(-3px);
+}
+
+.icon{
+  font-size:32px;
+}
+
+.tool h3{
+  margin:10px 0 6px;
+}
+
+.tool p{
+  margin:0;
+  color:#666;
+  line-height:1.5;
+}
+
+footer{
+  margin-top:30px;
+  background:#111;
+  color:#ddd;
+  text-align:center;
+  padding:25px 15px;
+}
+
+footer a{
+  color:white;
+  text-decoration:none;
+  margin:0 8px;
+}
+
+footer p{
+  margin-top:15px;
+  font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
-    <h1>Age Calculator</h1>
-    <p>Enter your date of birth</p>
+<header>
+  <h1>ToolAadi</h1>
+  <p>Free, Simple & Useful Online Tools</p>
+</header>
 
-    <input type="date" id="dob">
+<div class="container">
 
-    <button onclick="calculateAge()">Calculate Age</button>
+  <div class="intro">
+    <h2>Our Free Tools</h2>
+    <p>Choose a tool below and get your result instantly.</p>
+  </div>
 
-    <div id="result"></div>
+  <div class="tools">
+
+    <a class="tool" href="age.html">
+      <div class="icon">🔢</div>
+      <h3>Age Calculator</h3>
+      <p>Calculate your exact age in years, months and days.</p>
+    </a>
+
+    <a class="tool" href="percentage.html">
+      <div class="icon">🧮</div>
+      <h3>Percentage Calculator</h3>
+      <p>Calculate percentages quickly and easily.</p>
+    </a>
+
+    <a class="tool" href="emi.html">
+      <div class="icon">💰</div>
+      <h3>EMI Calculator</h3>
+      <p>Calculate monthly loan EMI, interest and total payment.</p>
+    </a>
+
+    <a class="tool" href="unit.html">
+      <div class="icon">📏</div>
+      <h3>Unit Converter</h3>
+      <p>Convert common units such as km, miles, kg, pounds and more.</p>
+    </a>
+
+    <a class="tool" href="word.html">
+      <div class="icon">📝</div>
+      <h3>Word Counter</h3>
+      <p>Count words, characters and lines in your text.</p>
+    </a>
+
+  </div>
+
 </div>
 
-<script>
-function calculateAge(){
+<footer>
+  <div>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Disclaimer</a>
+  </div>
 
-    let dob = new Date(document.getElementById("dob").value);
-    let today = new Date();
-
-    if(!document.getElementById("dob").value){
-        document.getElementById("result").innerHTML =
-        "Please select your date of birth.";
-        return;
-    }
-
-    if(dob > today){
-        document.getElementById("result").innerHTML =
-        "Date of birth cannot be in the future.";
-        return;
-    }
-
-    let years = today.getFullYear() - dob.getFullYear();
-    let months = today.getMonth() - dob.getMonth();
-    let days = today.getDate() - dob.getDate();
-
-    if(days < 0){
-        months--;
-        let previousMonth = new Date(
-            today.getFullYear(),
-            today.getMonth(),
-            0
-        );
-        days += previousMonth.getDate();
-    }
-
-    if(months < 0){
-        years--;
-        months += 12;
-    }
-
-    document.getElementById("result").innerHTML =
-    "Your Age: " + years + " Years, " +
-    months + " Months, " +
-    days + " Days";
-}
-</script>
+  <p>© 2026 ToolAadi. All Rights Reserved.</p>
+</footer>
 
 </body>
-</html>
+    </html>
